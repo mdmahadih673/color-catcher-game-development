@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Catcher 🎨</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== START SCREEN ===== -->
+  <div id="startScreen" class="overlay active">
+    <div class="overlay-box">
+      <div class="game-logo">🎨</div>
+      <h1 class="game-title">Color Catcher</h1>
+      <p class="game-subtitle">Catch the right colored balls!</p>
+
+      <div class="instructions">
+        <h3>How to Play</h3>
+        <ul>
+          <li>🎯 A <strong>target color</strong> is shown each round</li>
+          <li>⬅️ ➡️ Move the basket with <strong>Arrow Keys</strong></li>
+          <li>📱 Swipe or use buttons on <strong>Mobile</strong></li>
+          <li>✅ Catch target color → <strong>+1 point</strong></li>
+          <li>❌ Catch wrong color → <strong>-1 point</strong></li>
+          <li>💔 Miss target color → <strong>-1 life</strong></li>
+          <li>❤️ You start with <strong>3 lives</strong></li>
+        </ul>
+      </div>
+
+      <div class="high-score-display" id="startHighScore">Best: 0</div>
+      <button class="btn btn-primary" id="startBtn">🚀 Start Game</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME OVER SCREEN ===== -->
+  <div id="gameOverScreen" class="overlay">
+    <div class="overlay-box">
+      <div class="game-logo">💀</div>
+      <h2 class="game-title">Game Over!</h2>
+      <div class="final-scores">
+        <div class="score-card">
+          <span class="score-label">Your Score</span>
+          <span class="score-value" id="finalScore">0</span>
+        </div>
+        <div class="score-card highlight">
+          <span class="score-label">🏆 Best Score</span>
+          <span class="score-value" id="finalHighScore">0</span>
+        </div>
+      </div>
+      <p id="newRecordMsg" class="new-record hidden">🎉 New High Score!</p>
+      <button class="btn btn-primary" id="restartBtn">🔄 Play Again</button>
+      <button class="btn btn-secondary" id="menuBtn">🏠 Main Menu</button>
+    </div>
+  </div>
+
+  <!-- ===== PAUSE SCREEN ===== -->
+  <div id="pauseScreen" class="overlay">
+    <div class="overlay-box small">
+      <div class="game-logo">⏸️</div>
+      <h2 class="game-title">Paused</h2>
+      <p style="color:#ccc; margin-bottom:24px;">Take a breather!</p>
+      <button class="btn btn-primary" id="resumeBtn">▶️ Resume</button>
+      <button class="btn btn-secondary" id="pauseMenuBtn">🏠 Main Menu</button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN GAME ===== -->
+  <div id="gameWrapper">
+
+    <!-- HUD -->
+    <header id="hud">
+      <div class="hud-left">
+        <div class="hud-item">
+          <span class="hud-label">Score</span>
+          <span class="hud-value" id="scoreDisplay">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">Best</span>
+          <span class="hud-value" id="highScoreDisplay">0</span>
+        </div>
+      </div>
+
+      <div class="hud-center">
+        <div id="targetColorBox">
+          <span class="catch-label">CATCH</span>
+          <span id="targetColorDot" class="color-dot"></span>
+          <span id="targetColorName" class="target-name">Blue</span>
+        </div>
+      </div>
+
+      <div class="hud-right">
+        <div class="hud-item">
+          <span class="hud-label">Lives</span>
+          <span class="hud-value" id="livesDisplay">❤️❤️❤️</span>
+        </div>
+        <button id="pauseBtn" class="icon-btn" title="Pause">⏸</button>
+      </div>
+    </header>
+
+    <!-- LEVEL BADGE -->
+    <div id="levelBadge">Level <span id="levelDisplay">1</span></div>
+
+    <!-- CANVAS -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- MOBILE CONTROLS -->
+    <div id="mobileControls">
+      <button class="mobile-btn" id="leftBtn">◀</button>
+      <button class="mobile-btn" id="rightBtn">▶</button>
+    </div>
+
+  </div>
+
+  <!-- FLOATING PARTICLES (background decoration) -->
+  <div id="particles" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
